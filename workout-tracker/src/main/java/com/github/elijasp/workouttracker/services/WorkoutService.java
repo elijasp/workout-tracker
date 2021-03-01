@@ -30,4 +30,8 @@ public class WorkoutService {
         }
         return workout.get();
     }
+
+    public Iterable<Workout> findAll() {
+        return repository.findAll();
+    }
 }

@@ -42,4 +42,9 @@ public class WorkoutController {
         Workout foundWorkout = workoutService.findWorkoutById(id);
         return new ResponseEntity<>(foundWorkout, HttpStatus.OK);
     }
+
+    @GetMapping("/all")
+    public Iterable<Workout> findAllWorkouts(){
+        return workoutService.findAll();
+    }
 }
