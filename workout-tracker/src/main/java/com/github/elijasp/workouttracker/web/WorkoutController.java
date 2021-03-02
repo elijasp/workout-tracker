@@ -44,7 +44,13 @@ public class WorkoutController {
     }
 
     @GetMapping("/all")
-    public Iterable<Workout> findAllWorkouts(){
-        return workoutService.findAll();
+    public ResponseEntity<Iterable<Workout>> findAllWorkouts(){
+        Iterable<Workout> workouts = workoutService.findAll();
+        return new ResponseEntity<>(workouts, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteWorkout(@PathVariable Long id){
+        workoutService.deleteWorkout(id);
     }
 }

@@ -34,4 +34,9 @@ public class WorkoutService {
     public Iterable<Workout> findAll() {
         return repository.findAll();
     }
+
+    public void deleteWorkout(Long id){
+        Workout workoutToDelete = findWorkoutById(id);
+        repository.delete(workoutToDelete);
+    }
 }
