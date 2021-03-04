@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 
 @Entity
@@ -11,8 +15,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "Name is required")
+    @Size(min = 2, max = 40, message = "2-40 characters allowed")
     private String name;
-    private Double weight;
+    @Digits(integer = 3, fraction = 2)
+    private BigDecimal weight;
+    @Digits(integer = 3, fraction = 0)
     private Integer age;
 
     // == constructor ==
@@ -35,11 +43,11 @@ public class User {
         this.name = name;
     }
 
-    public Double getWeight() {
+    public BigDecimal getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(BigDecimal weight) {
         this.weight = weight;
     }
 
